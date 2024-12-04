@@ -14,9 +14,12 @@ function AccountStockOutTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/entryOut", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/entryOut",
+        {
+          withCredentials: true,
+        }
+      );
       const sortedData = response.data.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
@@ -39,7 +42,7 @@ function AccountStockOutTable() {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:4000/api/entryOut/${selectedEntry._id}`
+        `https://singhania-inventory.onrender.com/api/entryOut/${selectedEntry._id}`
       );
       fetchSubmittedData();
       setShowDeleteModal(false);
@@ -58,7 +61,7 @@ function AccountStockOutTable() {
       };
 
       await axios.put(
-        `http://localhost:4000/api/entryOut/${selectedEntry._id}`,
+        `https://singhania-inventory.onrender.com/api/entryOut/${selectedEntry._id}`,
         updatedEntry
       );
       fetchSubmittedData();

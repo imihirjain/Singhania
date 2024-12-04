@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; 
+import axios from "axios";
 
 const ProfilePage = () => {
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:4000/api/auth/user", {
-          headers: {
-            Authorization: `Bearer ${token}`
+        const response = await axios.get(
+          "https://singhania-inventory.onrender.com/api/auth/user",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         setUser(response.data.data); // Assuming the user data is in response.data.data
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
 
-    fetchUser(); 
-  }, []); 
+    fetchUser();
+  }, []);
 
   if (!user) {
     return <div>Loading...</div>;
@@ -63,7 +66,7 @@ const ProfilePage = () => {
               id="email"
               className="mt-2 ml-4 focus:ring-darkgray focus:border-darkgray block w-full lg:w-[300px] shadow-sm sm:text-sm border-gray-300 rounded-md"
               value={user.email}
-              readOnly 
+              readOnly
             />
             <div className="bg-darkgray h-4 w-full mt-2"></div>
           </div>

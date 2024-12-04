@@ -11,9 +11,12 @@ function GreyStockOutTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/lots", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/lots",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Fetched Data:", response.data);
       const sortedData = response.data.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
@@ -68,7 +71,8 @@ function GreyStockOutTable() {
       <div className="w-full mt-6 bg-white border-nav border-2 rounded-lg">
         <div className="flex flex-col lg:flex lg:flex-row ml-4 mt-4 lg:justify-between">
           <div className="text-title font-bold">
-            Grey Stock Out Table <br /> Total: {filteredData.reduce((total, lot) => total + lot.entries.length, 0)}
+            Grey Stock Out Table <br /> Total:{" "}
+            {filteredData.reduce((total, lot) => total + lot.entries.length, 0)}
           </div>
 
           <div className="flex mt-3 items-center bg-backgrnd justify-center mr-6 h-[35px] overflow-hidden rounded-full">
@@ -92,7 +96,10 @@ function GreyStockOutTable() {
 
         {filteredData.length === 0 ? (
           <div className="text-center">
-            <p className="text-gray-800 font-semibold text-lg" style={{ color: "#4A90E2" }}>
+            <p
+              className="text-gray-800 font-semibold text-lg"
+              style={{ color: "#4A90E2" }}
+            >
               Sorry, no data available at the moment.
             </p>
           </div>
@@ -143,25 +150,46 @@ function GreyStockOutTable() {
                       <tr key={entry._id}>
                         {index === 0 && (
                           <>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {formatDateTime(lot.createdAt)}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.lotNumber}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.partyName}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.quality}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.shade}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.processType}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500" rowSpan={lot.entries.length}>
+                            <td
+                              className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                              rowSpan={lot.entries.length}
+                            >
                               {lot.status}
                             </td>
                           </>

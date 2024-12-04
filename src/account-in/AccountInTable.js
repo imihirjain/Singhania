@@ -11,9 +11,12 @@ function StockInTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/entries", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/entries",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Fetched Data:", response.data);
       // Sort the data by date and time in descending order
       const sortedData = response.data.sort((a, b) => {
@@ -102,7 +105,7 @@ function StockInTable() {
             <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow-hidden">
               <thead className="bg-header text-header-font font-header">
                 <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Date & Time
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
@@ -123,34 +126,57 @@ function StockInTable() {
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Roll
                   </th>
-                 
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-login font-header text-[16px] font-medium divide-gray-200">
                 {Object.entries(groupedData).map(([key, value], index) => (
                   <React.Fragment key={index}>
                     <tr>
-                    <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {formatDateTime(value[0].createdAt) || "N/A"}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {value[0].partyName}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {value[0].challanNumber}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].qualities[0]?.quality || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].qualities[0]?.kg || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].qualities[0]?.meter || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].qualities[0]?.roll || "N/A"}</td>
-                     
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].qualities[0]?.quality || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].qualities[0]?.kg || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].qualities[0]?.meter || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].qualities[0]?.roll || "N/A"}
+                      </td>
                     </tr>
                     {value.slice(1).map((item, idx) => (
                       <tr key={idx}>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.qualities[0]?.quality || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.qualities[0]?.kg || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.qualities[0]?.meter || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.qualities[0]?.roll || "N/A"}</td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.qualities[0]?.quality || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.qualities[0]?.kg || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.qualities[0]?.meter || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.qualities[0]?.roll || "N/A"}
+                        </td>
                       </tr>
                     ))}
                   </React.Fragment>

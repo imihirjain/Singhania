@@ -67,7 +67,7 @@ const LotManagement = () => {
   const fetchLotsByStatus = async (status) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/lots/status/${status}`
+        `https://singhania-inventory.onrender.com/api/lots/status/${status}`
       );
       setLots(response.data);
     } catch (error) {
@@ -77,7 +77,9 @@ const LotManagement = () => {
 
   const fetchParties = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/parties");
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/parties"
+      );
       setParties(
         response.data.map((party) => ({
           value: party.partyName,
@@ -92,7 +94,7 @@ const LotManagement = () => {
   const fetchQualities = async (selectedParty) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/parties/${selectedParty}/qualities`
+        `https://singhania-inventory.onrender.com/api/parties/${selectedParty}/qualities`
       );
       if (response.data && Array.isArray(response.data.qualities)) {
         setQualities(
@@ -112,7 +114,7 @@ const LotManagement = () => {
   const fetchChallanNumbers = async (partyName, quality) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/parties/${partyName}/qualities/${quality}/challans`
+        `https://singhania-inventory.onrender.com/api/parties/${partyName}/qualities/${quality}/challans`
       );
       if (Array.isArray(response.data)) {
         setChallanNumbers(
@@ -229,7 +231,7 @@ const LotManagement = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:4000/api/lots",
+        "https://singhania-inventory.onrender.com/api/lots",
         payload
       );
       console.log("Response for new lot submission:", response.data);
@@ -263,10 +265,13 @@ const LotManagement = () => {
 
   const handleMarkComplete = async (lotId) => {
     try {
-      await axios.post("http://localhost:4000/api/lots/status", {
-        lotId,
-        status: "complete",
-      });
+      await axios.post(
+        "https://singhania-inventory.onrender.com/api/lots/status",
+        {
+          lotId,
+          status: "complete",
+        }
+      );
       fetchLotsByStatus(status);
     } catch (error) {
       console.error("Error updating lot status:", error);

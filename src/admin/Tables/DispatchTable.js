@@ -14,9 +14,12 @@ function DispatchTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/dispatch", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/dispatch",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Fetched Data from dispatch:", response.data);
       const sortedData = response.data.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
@@ -40,7 +43,7 @@ function DispatchTable() {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:4000/api/dispatch/${selectedEntry._id}`
+        `https://singhania-inventory.onrender.com/api/dispatch/${selectedEntry._id}`
       );
       fetchSubmittedData();
       setShowDeleteModal(false);
@@ -60,7 +63,7 @@ function DispatchTable() {
       };
 
       await axios.put(
-        `http://localhost:4000/api/dispatch/${selectedEntry._id}`,
+        `https://singhania-inventory.onrender.com/api/dispatch/${selectedEntry._id}`,
         updatedEntry
       );
       fetchSubmittedData();

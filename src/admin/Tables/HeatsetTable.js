@@ -15,7 +15,7 @@ function HeatsetTable() {
   const fetchSubmittedData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/lots/completed/heat",
+        "https://singhania-inventory.onrender.com/api/lots/completed/heat",
         {
           withCredentials: true,
         }
@@ -42,7 +42,9 @@ function HeatsetTable() {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/lots/${selectedEntry._id}`);
+      await axios.delete(
+        `https://singhania-inventory.onrender.com/api/lots/${selectedEntry._id}`
+      );
       fetchSubmittedData();
       setShowDeleteModal(false);
     } catch (error) {
@@ -60,7 +62,7 @@ function HeatsetTable() {
       };
 
       await axios.put(
-        `http://localhost:4000/api/lots/${selectedEntry._id}`,
+        `https://singhania-inventory.onrender.com/api/lots/${selectedEntry._id}`,
         updatedEntry
       );
       fetchSubmittedData();
@@ -107,7 +109,7 @@ function HeatsetTable() {
     if (!acc[key]) {
       acc[key] = [];
     }
-    lot.entries.forEach(entry => acc[key].push({ ...lot, ...entry }));
+    lot.entries.forEach((entry) => acc[key].push({ ...lot, ...entry }));
     return acc;
   }, {});
 

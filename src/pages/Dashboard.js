@@ -117,7 +117,7 @@ function Dashboard() {
 
   const fetchTotalSaleAmount = () => {
     fetch(
-      `http://localhost:4000/api/sales/get/${authContext.user}/totalsaleamount`
+      `https://singhania-inventory.onrender.com/api/sales/get/${authContext.user}/totalsaleamount`
     )
       .then(checkResponse)
       .then((datas) => setSaleAmount(datas.totalSaleAmount))
@@ -125,28 +125,28 @@ function Dashboard() {
   };
 
   const fetchTotalPurchaseAmount = () => {
-    fetch(`http://localhost:4000/api/login`)
+    fetch(`https://singhania-inventory.onrender.com/api/login`)
       .then(checkResponse)
       .then((datas) => setPurchaseAmount(datas.totalPurchaseAmount))
       .catch((err) => console.error("fetchTotalPurchaseAmount error:", err));
   };
 
   const fetchStoresData = () => {
-    fetch(`http://localhost:4000/api/parties`)
+    fetch(`https://singhania-inventory.onrender.com/api/parties`)
       .then(checkResponse)
       .then((datas) => setStores(datas))
       .catch((err) => console.error("fetchStoresData error:", err));
   };
 
   const fetchProductsData = () => {
-    fetch(`http://localhost:4000/api/qualities`)
+    fetch(`https://singhania-inventory.onrender.com/api/qualities`)
       .then(checkResponse)
       .then((datas) => setProducts(datas))
       .catch((err) => console.error("fetchProductsData error:", err));
   };
 
   const fetchMonthlySalesData = () => {
-    fetch(`http://localhost:4000/api/parties`)
+    fetch(`https://singhania-inventory.onrender.com/api/parties`)
       .then(checkResponse)
       .then((datas) => {
         console.log("Fetched sales data:", datas);

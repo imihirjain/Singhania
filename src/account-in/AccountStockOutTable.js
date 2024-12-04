@@ -11,9 +11,12 @@ function AccountStockOutTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/entryOut", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/entryOut",
+        {
+          withCredentials: true,
+        }
+      );
       console.log("Fetched Data:", response.data);
       const sortedData = response.data.sort((a, b) => {
         return new Date(b.entryOutDate) - new Date(a.entryOutDate);
@@ -27,9 +30,14 @@ function AccountStockOutTable() {
   const handleSearch = () => {
     const filteredData = submittedData.filter(
       (item) =>
-        (item.party && item.party.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.lotNumber && item.lotNumber.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (item.qualityChallanNumber && item.qualityChallanNumber.toLowerCase().includes(searchQuery.toLowerCase()))
+        (item.party &&
+          item.party.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.lotNumber &&
+          item.lotNumber.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.qualityChallanNumber &&
+          item.qualityChallanNumber
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()))
     );
     return filteredData;
   };
@@ -90,7 +98,10 @@ function AccountStockOutTable() {
 
         {Object.keys(groupedData).length === 0 ? (
           <div className="text-center">
-            <p className="text-gray-800 font-semibold text-lg" style={{ color: "#4A90E2" }}>
+            <p
+              className="text-gray-800 font-semibold text-lg"
+              style={{ color: "#4A90E2" }}
+            >
               Sorry, no data available at the moment.
             </p>
           </div>
@@ -99,7 +110,7 @@ function AccountStockOutTable() {
             <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow-hidden">
               <thead className="bg-header text-header-font font-header">
                 <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Date & Time
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
@@ -123,37 +134,63 @@ function AccountStockOutTable() {
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Roll
                   </th>
-             
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-login font-header text-[16px] font-medium divide-gray-200">
                 {Object.entries(groupedData).map(([key, value], index) => (
                   <React.Fragment key={index}>
                     <tr>
-                    <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {formatDateTime(value[0].entryOutDate) || "N/A"}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {value[0].lotNumber}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {value[0].party}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap" rowSpan={value.length}>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap"
+                        rowSpan={value.length}
+                      >
                         {value[0].quality || "N/A"}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].qualityChallanNumber || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].kg || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].meter || "N/A"}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{value[0].roll || "N/A"}</td>
-                     
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].qualityChallanNumber || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].kg || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].meter || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {value[0].roll || "N/A"}
+                      </td>
                     </tr>
                     {value.slice(1).map((item, idx) => (
                       <tr key={idx}>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.qualityChallanNumber || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.kg || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.meter || "N/A"}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">{item.roll || "N/A"}</td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.qualityChallanNumber || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.kg || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.meter || "N/A"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {item.roll || "N/A"}
+                        </td>
                       </tr>
                     ))}
                   </React.Fragment>

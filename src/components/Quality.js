@@ -14,7 +14,7 @@ const Quality = ({ text, value, onChange, selectedParty }) => {
         console.log(`Fetching qualities for party ID: ${selectedParty}`);
         try {
           const response = await axios.get(
-            `http://localhost:4000/api/party/${selectedParty}/qualities`
+            `https://singhania-inventory.onrender.com/api/party/${selectedParty}/qualities`
           );
           console.log("Qualities fetched:", response.data);
           setQualities(response.data || []); // Assuming the response is an array of strings

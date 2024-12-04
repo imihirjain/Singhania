@@ -65,7 +65,7 @@ function Login() {
       toast.error("Please enter both email and password to login.");
       return;
     }
-    fetch("http://localhost:4000/api/auth/login", {
+    fetch("https://singhania-inventory.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

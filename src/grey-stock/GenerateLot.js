@@ -6,7 +6,9 @@ const GenerateLot = ({ text }) => {
 
   const handleGenerate = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/generate-lot-number");
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/generate-lot-number"
+      );
       if (response.data && response.data.lotNumber) {
         setLotNumber(response.data.lotNumber);
       }

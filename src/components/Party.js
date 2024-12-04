@@ -11,7 +11,9 @@ const Party = ({ text, value, onChange, disabled }) => {
     const fetchParties = async () => {
       try {
         console.log("Fetching parties...");
-        const response = await axios.get("http://localhost:4000/api/party");
+        const response = await axios.get(
+          "https://singhania-inventory.onrender.com/api/party"
+        );
         console.log("Parties fetched:", response.data);
         const formattedParties = response.data.map((party) => ({
           value: party._id,

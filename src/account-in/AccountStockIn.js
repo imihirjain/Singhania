@@ -28,7 +28,9 @@ const AccountEntries = () => {
   useEffect(() => {
     const fetchParties = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/party");
+        const response = await axios.get(
+          "https://singhania-inventory.onrender.com/api/party"
+        );
         setParties(response.data);
       } catch (error) {
         console.error("Error fetching parties:", error);
@@ -115,9 +117,12 @@ const AccountEntries = () => {
     if (tableData.length > 0) {
       try {
         console.log("Submitting data:", tableData);
-        await axios.post("http://localhost:4000/api/entries", {
-          entries: tableData,
-        });
+        await axios.post(
+          "https://singhania-inventory.onrender.com/api/entries",
+          {
+            entries: tableData,
+          }
+        );
         toast.success("Data submitted successfully!");
         setTableData([]); // Clear table data after submission
         // Allow changing party name and challan number after submission

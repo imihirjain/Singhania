@@ -21,7 +21,7 @@ const CombinedForm = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/dispatch")
+      .get("https://singhania-inventory.onrender.com/api/dispatch")
       .then((response) => {
         setDispatchData(response.data);
         setIsLoading(false);
@@ -94,7 +94,7 @@ const CombinedForm = () => {
     console.log("Form Data: ", formData);
 
     axios
-      .post("http://localhost:4000/api/entryOut", formData)
+      .post("https://singhania-inventory.onrender.com/api/entryOut", formData)
       .then((response) => {
         console.log("Data submitted successfully", response);
         // Reset form after successful submission

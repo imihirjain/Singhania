@@ -25,7 +25,7 @@ const DispatchForm = () => {
   useEffect(() => {
     // Fetch lot status dispatch data
     axios
-      .get("http://localhost:4000/api/lots/status/dispatch")
+      .get("https://singhania-inventory.onrender.com/api/lots/status/dispatch")
       .then((response) => {
         setLots(response.data);
         console.log("Check Dispatch Data", response.data);
@@ -137,7 +137,10 @@ const DispatchForm = () => {
     console.log("Dispatch Data:", dataToSubmit);
 
     axios
-      .post("http://localhost:4000/api/dispatch", dataToSubmit)
+      .post(
+        "https://singhania-inventory.onrender.com/api/dispatch",
+        dataToSubmit
+      )
       .then((response) => {
         console.log("Dispatch data submitted:", response.data);
         toast.success("Dispatch data submitted successfully!");

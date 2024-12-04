@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Select from 'react-select';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Select from "react-select";
 
 const Party = ({ text, value, onChange, disabled }) => {
   const [parties, setParties] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchParties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/parties');
-        const formattedParties = response.data.map(party => ({
+        const response = await axios.get(
+          "https://singhania-inventory.onrender.com/api/parties"
+        );
+        const formattedParties = response.data.map((party) => ({
           value: party.partyName,
-          label: party.partyName
+          label: party.partyName,
         }));
         setParties(formattedParties);
         setLoading(false);
       } catch (error) {
-        setError('Error fetching parties');
+        setError("Error fetching parties");
         setLoading(false);
       }
     };
@@ -29,9 +31,9 @@ const Party = ({ text, value, onChange, disabled }) => {
   const handleSelectChange = (selectedOption) => {
     onChange({
       target: {
-        name: 'partyName',
-        value: selectedOption ? selectedOption.value : ''
-      }
+        name: "partyName",
+        value: selectedOption ? selectedOption.value : "",
+      },
     });
   };
 
@@ -50,7 +52,7 @@ const Party = ({ text, value, onChange, disabled }) => {
       </label>
       <Select
         name="partyName"
-        value={parties.find(option => option.value === value)}
+        value={parties.find((option) => option.value === value)}
         onChange={handleSelectChange}
         disabled={disabled}
         options={parties}

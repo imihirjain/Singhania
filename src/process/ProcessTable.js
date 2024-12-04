@@ -12,7 +12,7 @@ function ProcessTable() {
   const fetchSubmittedData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/lots/completed/process",
+        "https://singhania-inventory.onrender.com/api/lots/completed/process",
         {
           withCredentials: true,
         }
@@ -101,7 +101,7 @@ function ProcessTable() {
             <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow-hidden">
               <thead className="bg-header text-header-font font-header">
                 <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Date & Time
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
@@ -134,7 +134,6 @@ function ProcessTable() {
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Roll
                   </th>
-               
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-login font-header text-[16px] font-medium divide-gray-200">
@@ -146,34 +145,62 @@ function ProcessTable() {
                           <tr key={subEntry._id}>
                             {idx === 0 && subIdx === 0 && (
                               <React.Fragment>
-                                  <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
-                                {formatDateTime(entry.createdAt) || "N/A"}
-                              </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
+                                  {formatDateTime(entry.createdAt) || "N/A"}
+                                </td>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.lotNumber || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.partyName}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.quality}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.shade || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.processType || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.status || "N/A"}
                                 </td>
                               </React.Fragment>
                             )}
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.challanNumber || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.kg || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.meter || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.roll || "N/A"}</td>
-                            
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.challanNumber || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.kg || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.meter || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.roll || "N/A"}
+                            </td>
                           </tr>
                         ))}
                       </React.Fragment>

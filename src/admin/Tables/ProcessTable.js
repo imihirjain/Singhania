@@ -15,7 +15,7 @@ function ProcessTable() {
   const fetchSubmittedData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/lots/completed/process",
+        "https://singhania-inventory.onrender.com/api/lots/completed/process",
         {
           withCredentials: true,
         }
@@ -45,7 +45,7 @@ function ProcessTable() {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:4000/api/lots/${selectedEntry.subEntry._id}`
+        `https://singhania-inventory.onrender.com/api/lots/${selectedEntry.subEntry._id}`
       );
       fetchSubmittedData();
       setShowDeleteModal(false);
@@ -65,7 +65,7 @@ function ProcessTable() {
       };
 
       await axios.put(
-        `http://localhost:4000/api/lots/${selectedEntry.subEntry._id}`,
+        `https://singhania-inventory.onrender.com/api/lots/${selectedEntry.subEntry._id}`,
         updatedEntry
       );
       fetchSubmittedData();

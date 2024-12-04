@@ -11,10 +11,15 @@ const HeatsetTable = () => {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/lots/completed/heat", {
-        withCredentials: true,
-      });
-      const sortedData = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/lots/completed/heat",
+        {
+          withCredentials: true,
+        }
+      );
+      const sortedData = response.data.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
       setSubmittedData(sortedData);
     } catch (error) {
       console.error("Error fetching submitted data:", error);
@@ -83,7 +88,10 @@ const HeatsetTable = () => {
         </div>
         {Object.keys(groupedData).length === 0 ? (
           <div className="text-center">
-            <p className="text-gray-800 font-semibold text-lg" style={{ color: "#4A90E2" }}>
+            <p
+              className="text-gray-800 font-semibold text-lg"
+              style={{ color: "#4A90E2" }}
+            >
               Sorry, no data available at the moment.
             </p>
           </div>
@@ -92,18 +100,40 @@ const HeatsetTable = () => {
             <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow-hidden">
               <thead className="bg-header text-header-font font-header">
                 <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Date & Time</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Date & Time
+                  </th>
 
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Lot Number</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Party Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Quality</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Shade</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Process</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Challan Number</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Kg</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Meter</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">Roll</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Lot Number
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Party Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Quality
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Shade
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Process
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Status
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Challan Number
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Kg
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Meter
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                    Roll
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-login font-header text-[16px] font-medium divide-gray-200">
@@ -115,34 +145,62 @@ const HeatsetTable = () => {
                           <tr key={subEntry._id}>
                             {idx === 0 && subIdx === 0 && (
                               <React.Fragment>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
-                                {formatDateTime(entry.createdAt) || "N/A"}
-                              </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
+                                  {formatDateTime(entry.createdAt) || "N/A"}
+                                </td>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.lotNumber || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.partyName}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.quality}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.shade || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.processType || "N/A"}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap" rowSpan={entry.entries.length}>
+                                <td
+                                  className="px-6 py-4 whitespace-nowrap"
+                                  rowSpan={entry.entries.length}
+                                >
                                   {entry.status || "N/A"}
                                 </td>
                               </React.Fragment>
                             )}
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.challanNumber || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.kg || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.meter || "N/A"}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{subEntry.roll || "N/A"}</td>
-                           
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.challanNumber || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.kg || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.meter || "N/A"}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {subEntry.roll || "N/A"}
+                            </td>
                           </tr>
                         ))}
                       </React.Fragment>

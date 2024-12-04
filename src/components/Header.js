@@ -37,11 +37,14 @@ export default function Header() {
 
   const fetchUserRole = async (token) => {
     try {
-      const response = await axios.get("http://localhost:4000/api/auth/user", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/auth/user",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.data && response.data.data && response.data.data.check) {
         setUserRole(response.data.data.check);
@@ -233,13 +236,16 @@ export default function Header() {
 
   const handleSignOut = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/auth/logout", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://singhania-inventory.onrender.com/api/auth/logout",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
       if (response.ok) {
         toast("Logout Successful!", { autoClose: 2000 });
         setTimeout(() => {

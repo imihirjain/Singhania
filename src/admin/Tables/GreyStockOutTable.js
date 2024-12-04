@@ -60,7 +60,9 @@ function GreyStockOutTable() {
     const uniqueParties = [
       ...new Set(submittedData.map((item) => item.partyName)),
     ];
-    const uniqueLots = [...new Set(submittedData.map((item) => item.lotNumber))];
+    const uniqueLots = [
+      ...new Set(submittedData.map((item) => item.lotNumber)),
+    ];
     setUniquePartyNames(uniqueParties);
     setUniqueLotNumbers(uniqueLots);
   }, [submittedData]);
@@ -80,9 +82,12 @@ function GreyStockOutTable() {
 
   const fetchSubmittedData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/lots", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/lots",
+        {
+          withCredentials: true,
+        }
+      );
       const sortedData = response.data.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
@@ -97,8 +102,10 @@ function GreyStockOutTable() {
       (item) =>
         (!selectedPartyNames.length ||
           selectedPartyNames.includes(item.partyName)) &&
-        (!selectedQualities.length || selectedQualities.includes(item.quality)) &&
-        (!selectedLotNumbers.length || selectedLotNumbers.includes(item.lotNumber))
+        (!selectedQualities.length ||
+          selectedQualities.includes(item.quality)) &&
+        (!selectedLotNumbers.length ||
+          selectedLotNumbers.includes(item.lotNumber))
     );
 
     if (showColoredRows) {
@@ -221,7 +228,7 @@ function GreyStockOutTable() {
           : entry
       );
       const response = await axios.put(
-        `http://localhost:4000/api/lots/${editingLotId}`,
+        `https://singhania-inventory.onrender.com/api/lots/${editingLotId}`,
         { ...lot, entries: updatedEntries, shade },
         {
           withCredentials: true,
@@ -250,7 +257,7 @@ function GreyStockOutTable() {
   const confirmDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/lots/${deletingLotId}`,
+        `https://singhania-inventory.onrender.com/api/lots/${deletingLotId}`,
         {
           withCredentials: true,
         }

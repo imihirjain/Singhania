@@ -4,7 +4,7 @@ import axios from "axios";
 const InputField = ({ text, name, value, onChange, PartyName, Quality }) => {
   const [challans, setChallans] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (PartyName && Quality) {
@@ -16,23 +16,25 @@ const InputField = ({ text, name, value, onChange, PartyName, Quality }) => {
 
   const fetchData = async () => {
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      console.log(`Fetching challans for party: ${PartyName} and quality: ${Quality}`);
-      const response = await axios.get(
-        `http://localhost:4000/api/parties/${PartyName}/qualities/${Quality}/challans`
+      console.log(
+        `Fetching challans for party: ${PartyName} and quality: ${Quality}`
       );
-      console.log('Challans fetched:', response.data);
+      const response = await axios.get(
+        `https://singhania-inventory.onrender.com/api/parties/${PartyName}/qualities/${Quality}/challans`
+      );
+      console.log("Challans fetched:", response.data);
 
       if (Array.isArray(response.data)) {
         setChallans(response.data);
       } else {
-        console.warn('Expected an array of challans but got:', response.data);
+        console.warn("Expected an array of challans but got:", response.data);
         setChallans([]);
       }
     } catch (error) {
       console.error("Error fetching challans:", error);
-      setError('Error fetching challans. Please try again later.');
+      setError("Error fetching challans. Please try again later.");
     } finally {
       setLoading(false);
     }

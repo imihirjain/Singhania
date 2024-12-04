@@ -29,7 +29,9 @@ const PartyManager = () => {
 
   const fetchParties = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/party");
+      const response = await axios.get(
+        "https://singhania-inventory.onrender.com/api/party"
+      );
       setParties(response.data);
     } catch (error) {
       console.error("Error fetching parties:", error);
@@ -40,11 +42,14 @@ const PartyManager = () => {
     try {
       if (selectedParty) {
         await axios.put(
-          `http://localhost:4000/api/party/${selectedParty._id}`,
+          `https://singhania-inventory.onrender.com/api/party/${selectedParty._id}`,
           data
         );
       } else {
-        await axios.post("http://localhost:4000/api/party", data);
+        await axios.post(
+          "https://singhania-inventory.onrender.com/api/party",
+          data
+        );
       }
       fetchParties();
       reset();
@@ -58,12 +63,12 @@ const PartyManager = () => {
     try {
       if (selectedQuality) {
         await axios.put(
-          `http://localhost:4000/api/party/${qualityPartyId}/qualities/${selectedQuality._id}`,
+          `https://singhania-inventory.onrender.com/api/party/${qualityPartyId}/qualities/${selectedQuality._id}`,
           { newQuality: data.quality }
         );
       } else {
         await axios.post(
-          `http://localhost:4000/api/party/${qualityPartyId}/qualities`,
+          `https://singhania-inventory.onrender.com/api/party/${qualityPartyId}/qualities`,
           data
         );
       }
@@ -84,7 +89,9 @@ const PartyManager = () => {
 
   const deleteParty = async (partyId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/party/${partyId}`);
+      await axios.delete(
+        `https://singhania-inventory.onrender.com/api/party/${partyId}`
+      );
       fetchParties();
       closeModal();
     } catch (error) {
@@ -95,7 +102,7 @@ const PartyManager = () => {
   const deleteQuality = async (partyId, qualityId) => {
     try {
       await axios.delete(
-        `http://localhost:4000/api/party/${partyId}/qualities/${qualityId}`
+        `https://singhania-inventory.onrender.com/api/party/${partyId}/qualities/${qualityId}`
       );
       fetchParties();
       closeModal();
@@ -141,96 +148,112 @@ const PartyManager = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="container mx-auto p-4 flex flex-col items-center">
-      <h1 className="text-2xl font-login font-bold mb-4 text-center">
-        {" "}
-        Create Party And Quality
-      </h1>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="mb-4 bg-white p-6 rounded-lg shadow-md"
-      >
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
-          <label className="block text-lg font-login ml-2 mt-2 text-gray-700">Name</label>
-          <input
-            type="text"
-            {...register("name", { required: true })}
-            className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
-          placeholder="Enter Name"
-          />
-        </div>
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
-          <label className="block text-lg font-login ml-2 mt-2 text-gray-700">Location</label>
-          <input
-            type="text"
-            {...register("location", { required: true })}
-            className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
-          placeholder="Enter Location"
-          />
-        </div>
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
-          <label className="block text-lg font-login ml-2 mt-2 text-gray-700">Date</label>
-          <input
-            type="date"
-            {...register("date", { required: true })}
-            className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
-          />
-        </div>
-        <div className="flex justify-between">
-          <button
-            type="submit"
-            className="inline-flex mt-4 px-12 py-2 text-sm font-medium text-white bg-darkgray rounded-md hover:bg-white hover:text-darkgray outline"
-          >
-            {selectedParty ? "Update Party" : "Create Party"}
-          </button>
-          {selectedParty && (
-            <button
-              type="button"
-              onClick={() => {
-                reset();
-                setSelectedParty(null);
-              }}
-              className="bg-red-500 text-white py-2 px-4 rounded"
-            >
-              Cancel
-            </button>
-          )}
-        </div>
-      </form>
-
-      {qualityPartyId && (
+        <h1 className="text-2xl font-login font-bold mb-4 text-center">
+          {" "}
+          Create Party And Quality
+        </h1>
         <form
-          onSubmit={handleQualitySubmit(onQualitySubmit)}
+          onSubmit={handleSubmit(onSubmit)}
           className="mb-4 bg-white p-6 rounded-lg shadow-md"
         >
           <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
-              Quality
+              Name
             </label>
             <input
               type="text"
-              {...registerQuality("quality", { required: true })}
+              {...register("name", { required: true })}
               className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
-              placeholder="Add Quality"
+              placeholder="Enter Name"
             />
           </div>
-          <button
-            type="submit"
-            className="inline-flex mt-4 px-12 py-2 text-sm font-medium text-white bg-darkgray rounded-md hover:bg-white hover:text-darkgray outline"
-          >
-            {selectedQuality ? "Update Quality" : "Add Quality"}
-          </button>
+          <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
+              Location
+            </label>
+            <input
+              type="text"
+              {...register("location", { required: true })}
+              className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
+              placeholder="Enter Location"
+            />
+          </div>
+          <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
+              Date
+            </label>
+            <input
+              type="date"
+              {...register("date", { required: true })}
+              className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
+            />
+          </div>
+          <div className="flex justify-between">
+            <button
+              type="submit"
+              className="inline-flex mt-4 px-12 py-2 text-sm font-medium text-white bg-darkgray rounded-md hover:bg-white hover:text-darkgray outline"
+            >
+              {selectedParty ? "Update Party" : "Create Party"}
+            </button>
+            {selectedParty && (
+              <button
+                type="button"
+                onClick={() => {
+                  reset();
+                  setSelectedParty(null);
+                }}
+                className="bg-red-500 text-white py-2 px-4 rounded"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
         </form>
-      )}
+
+        {qualityPartyId && (
+          <form
+            onSubmit={handleQualitySubmit(onQualitySubmit)}
+            className="mb-4 bg-white p-6 rounded-lg shadow-md"
+          >
+            <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+              <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
+                Quality
+              </label>
+              <input
+                type="text"
+                {...registerQuality("quality", { required: true })}
+                className="ml-2 mt-2 mb-2 w-[90%] sm:w-auto rounded-md focus:ring-darkgray border-1 focus:border-darkgray placeholder:font-login"
+                placeholder="Add Quality"
+              />
+            </div>
+            <button
+              type="submit"
+              className="inline-flex mt-4 px-12 py-2 text-sm font-medium text-white bg-darkgray rounded-md hover:bg-white hover:text-darkgray outline"
+            >
+              {selectedQuality ? "Update Quality" : "Add Quality"}
+            </button>
+          </form>
+        )}
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow-hidden">
           <thead className="bg-header text-header-font font-header">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">Location</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">Date</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login ">Qualities</th>
-              <th className="px-12 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">
+                Location
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">
+                Date
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login ">
+                Qualities
+              </th>
+              <th className="px-12 py-3 text-left text-xs font-semibold text-[14px] uppercase font-login">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>

@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Select from 'react-select';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Select from "react-select";
 
 const Quality = ({ text, value, onChange, selectedParty }) => {
   const [qualities, setQualities] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchQualities = async () => {
       setLoading(true);
-      setError('');
+      setError("");
       try {
         if (selectedParty) {
-          const response = await axios.get(`http://localhost:4000/api/parties/${selectedParty}/qualities`);
+          const response = await axios.get(
+            `https://singhania-inventory.onrender.com/api/parties/${selectedParty}/qualities`
+          );
           if (Array.isArray(response.data.qualities)) {
             setQualities(response.data.qualities);
           } else {
@@ -23,7 +25,7 @@ const Quality = ({ text, value, onChange, selectedParty }) => {
           setQualities([]);
         }
       } catch (error) {
-        setError('Error fetching qualities');
+        setError("Error fetching qualities");
       } finally {
         setLoading(false);
       }
@@ -33,7 +35,7 @@ const Quality = ({ text, value, onChange, selectedParty }) => {
   }, [selectedParty]);
 
   const handleSelectChange = (selectedOption) => {
-    onChange(selectedOption ? selectedOption.value : '');
+    onChange(selectedOption ? selectedOption.value : "");
   };
 
   const qualityOptions = qualities.map((quality) => ({
@@ -51,7 +53,7 @@ const Quality = ({ text, value, onChange, selectedParty }) => {
       {!loading && !error && (
         <Select
           name="quality"
-          value={qualityOptions.find(option => option.value === value)}
+          value={qualityOptions.find((option) => option.value === value)}
           onChange={handleSelectChange}
           options={qualityOptions}
           className="ml-4 mt-2 mb-4 w-[90%] sm:w-auto rounded-md"
