@@ -21,10 +21,20 @@ app.use(cookieParser());
 app.use(express.json());
 
 // CORS setup
-const corsOptions = [
-  "http://localhost:3000",
-  "https://singhania-gamma.vercel.app",
-];
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "http://localhost:3000",
+      "https://singhania-gamma.vercel.app",
+    ];
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Deny the request
+    }
+  },
+  credentials: true, // Allow cookies and credentials
+};
 app.use(cors(corsOptions));
 
 // Routes
