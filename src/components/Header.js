@@ -276,10 +276,10 @@ export default function Header() {
                         src={require("../assets/Slogo2.png")}
                         alt="Inventory Management System"
                       />
-                      <p className="items-center font-login font-semibold ml-20 text-3xl">
-                        SINGHANIA FRESHER
-                      </p>
                     </div>
+                    <p className="items-center font-login font-semibold ml-20 mt-4 text-3xl">
+                      SINGHANIA FINISHERS
+                    </p>
                   </Link>
                   <div className="hidden md:block">
                     <div className="flex items-center gap-8 md:ml-6">
@@ -383,7 +383,7 @@ export default function Header() {
                 </div>
               </div>
               <Disclosure.Panel className="md:hidden">
-                <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <div className="relative space-y-1 px-2 pb-3 pt-2 sm:px-3">
                   {(navigation[userRole] || []).map((item) => (
                     <Link to={item.to} key={item.label}>
                       <Disclosure.Button
