@@ -187,7 +187,7 @@ const DispatchForm = () => {
         <div className="text-red-500 mb-4">{validationError}</div>
       )}
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
-        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label
             className="block text-lg font-login ml-4 mt-4 text-gray-700"
             htmlFor="lotNumber"
@@ -211,7 +211,7 @@ const DispatchForm = () => {
         </div>
         {dispatchData.lotNumber && (
           <>
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label
                 className="block text-lg font-login ml-4 mt-4 text-gray-700"
                 htmlFor="party"
@@ -231,7 +231,7 @@ const DispatchForm = () => {
                 </option>
               </select>
             </div>
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label
                 className="block text-lg font-login ml-4 mt-4 text-gray-700"
                 htmlFor="quality"
@@ -251,7 +251,7 @@ const DispatchForm = () => {
                 </option>
               </select>
             </div>
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label
                 className="block text-lg font-login ml-4 mt-4 text-gray-700"
                 htmlFor="qualityChallanNumber"
@@ -274,7 +274,7 @@ const DispatchForm = () => {
                   ))}
               </select>
             </div>
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label
                 className="block text-lg font-login ml-4 mt-4 text-gray-700"
                 htmlFor="process"
@@ -294,7 +294,7 @@ const DispatchForm = () => {
                 </option>
               </select>
             </div>
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label
                 className="block text-lg font-login ml-4 mt-4 text-gray-700"
                 htmlFor="shade"
@@ -316,7 +316,7 @@ const DispatchForm = () => {
             </div>
           </>
         )}
-        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label
             className="block text-lg font-login ml-4 mt-4 text-gray-700"
             htmlFor="karigarName"
@@ -334,7 +334,7 @@ const DispatchForm = () => {
             required
           />
         </div>
-        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label
             className="block text-lg font-login ml-4 mt-4 text-gray-700"
             htmlFor="kg"
@@ -352,7 +352,7 @@ const DispatchForm = () => {
             required
           />
         </div>
-        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label
             className="block text-lg font-login ml-4 mt-4 text-gray-700"
             htmlFor="meter"
@@ -370,7 +370,7 @@ const DispatchForm = () => {
             required
           />
         </div>
-        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label
             className="block text-lg font-login ml-4 mt-4 text-gray-700"
             htmlFor="roll"

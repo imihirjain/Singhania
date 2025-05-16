@@ -125,7 +125,7 @@ const CombinedForm = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="border-2 w-96 lg:w-[500px] rounded-lg h-30 overflow-hidden">
+      <div className="border-2 w-64 lg:w-[500px] rounded-lg h-30 overflow-hidden">
         <div className="mt-4 ml-4 text-4xl font-semibold">
           Account - Stock Out
         </div>
@@ -138,7 +138,7 @@ const CombinedForm = () => {
         <div>Loading...</div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Lot Number<span className="text-red-600 ml-1">*</span>
             </label>

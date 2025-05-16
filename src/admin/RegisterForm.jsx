@@ -69,7 +69,7 @@ const RegisterUser = () => {
           Register User
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               First Name
             </label>
@@ -84,7 +84,7 @@ const RegisterUser = () => {
             />
           </div>
 
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Last Name
             </label>
@@ -98,7 +98,7 @@ const RegisterUser = () => {
               className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Email
             </label>
@@ -112,7 +112,7 @@ const RegisterUser = () => {
               className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Password
             </label>
@@ -126,7 +126,7 @@ const RegisterUser = () => {
               className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Phone Number
             </label>
@@ -139,7 +139,7 @@ const RegisterUser = () => {
               className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
               Check
             </label>

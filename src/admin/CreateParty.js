@@ -153,7 +153,7 @@ const PartyManager = () => {
           Create Party And Quality
         </h1>
         <form onSubmit={handleSubmit(onSubmit)} className="mb-4 p-6 ">
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
               Name
             </label>
@@ -164,7 +164,7 @@ const PartyManager = () => {
               placeholder="Enter Name"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
               Location
             </label>
@@ -175,7 +175,7 @@ const PartyManager = () => {
               placeholder="Enter Location"
             />
           </div>
-          <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+          <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
             <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
               Date
             </label>
@@ -212,7 +212,7 @@ const PartyManager = () => {
             onSubmit={handleQualitySubmit(onQualitySubmit)}
             className="mb-4"
           >
-            <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+            <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
               <label className="block text-lg font-login ml-2 mt-2 text-gray-700">
                 Quality
               </label>
