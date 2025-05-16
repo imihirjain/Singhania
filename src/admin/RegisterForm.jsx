@@ -80,7 +80,7 @@ const RegisterUser = () => {
               value={formData.firstName}
               onChange={handleChange}
               required
-              className="block w-[300px] mt-2 ml-4 p-2  rounded mb-4 focus:ring-darkgray border-1 focus:border-darkgray"
+              className="block w-52 mt-2 ml-4 p-2  rounded mb-4 focus:ring-darkgray border-1 focus:border-darkgray"
             />
           </div>
 
@@ -95,7 +95,7 @@ const RegisterUser = () => {
               value={formData.lastName}
               onChange={handleChange}
               required
-              className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
+              className="block w-52 mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
           <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
@@ -109,7 +109,7 @@ const RegisterUser = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
+              className="block w-52 mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
           <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
@@ -123,7 +123,7 @@ const RegisterUser = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
+              className="block w-52 mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
           <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
@@ -136,7 +136,7 @@ const RegisterUser = () => {
               placeholder="Phone Number"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
+              className="block w-52 mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             />
           </div>
           <div className="border-2 w-64 lg:w-[500px] h-full rounded-lg mt-3 shadow-sm shadow-darkgray">
@@ -148,7 +148,7 @@ const RegisterUser = () => {
               value={formData.check}
               onChange={handleChange}
               required
-              className="block w-[300px] mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
+              className="block w-52 mt-2 ml-4 p-2 focus:ring-darkgray border-1 focus:border-darkgray rounded mb-4"
             >
               <option value="" disabled>
                 Select an option

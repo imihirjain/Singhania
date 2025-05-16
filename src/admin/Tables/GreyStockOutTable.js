@@ -371,24 +371,24 @@ function GreyStockOutTable() {
             <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
               <div>
                 <img
-                  className="h-[24px] w-[24px] ml-5"
+                  className="h-5 w-5 ml-12 text-xs"
                   src={require("../../assets/stockinSearch.png")}
                   alt="Inventory Management System"
                 />
               </div>
-              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <div className="h-5 ml-[25px] border-total border-[1px]"></div>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search Party Name..."
-                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-xs placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:flex justify-between items-center p-4">
+        <div className="flex flex-wrap justify-between items-center p-4">
           <div>
             <label htmlFor="partyNameFilter" className="mr-2">
               Party Name:
