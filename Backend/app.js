@@ -33,7 +33,7 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS")); // Deny the request
     }
   },
-  credentials: true, // Allow cookies and credentials
+  credentials: true, 
 };
 app.use(cors(corsOptions));
 

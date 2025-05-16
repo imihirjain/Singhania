@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ExportButtons } from "../components/ExportButton";
 
 function AccountStockOutTable() {
   const [submittedData, setSubmittedData] = useState([]);
@@ -69,6 +70,26 @@ function AccountStockOutTable() {
   const filteredData = handleSearch();
   const groupedData = groupEntries(filteredData);
 
+  const flattenData = () => {
+    const flat = [];
+    Object.values(groupedData).forEach((entries) => {
+      entries.forEach((entry) => {
+        flat.push({
+          "Date & Time": formatDateTime(entry.entryOutDate),
+          "Lot Number": entry.lotNumber,
+          "Party Name": entry.party || entry.partyName || "N/A",
+          Quality: entry.quality || "N/A",
+          "Challan Number":
+            entry.qualityChallanNumber || entry.challanNumber || "N/A",
+          Kg: entry.kg || "N/A",
+          Meter: entry.meter || "N/A",
+          Roll: entry.roll || "N/A",
+        });
+      });
+    });
+    return flat;
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-full mt-6 bg-white border-nav border-2 rounded-lg">
@@ -77,22 +98,29 @@ function AccountStockOutTable() {
             Account Stock Out Table <br /> Total: {submittedData.length}
           </div>
 
-          <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
-            <div>
-              <img
-                className="h-[24px] w-[24px] ml-5"
-                src={require("../assets/stockinSearch.png")}
-                alt="Inventory Management System"
+          <div className="flex items-center justify-center gap-7">
+            <ExportButtons
+              className="justify-end"
+              tableData={flattenData()}
+              filename="Account Stock Out"
+            />
+            <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
+              <div>
+                <img
+                  className="h-[24px] w-[24px] ml-5"
+                  src={require("../assets/stockinSearch.png")}
+                  alt="Inventory Management System"
+                />
+              </div>
+              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
-            <div className="h-[25px] ml-6 border-total border-[1px]"></div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
-            />
           </div>
         </div>
 

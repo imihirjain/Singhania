@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function SideMenu() {
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const [error, setError] = useState(null);
+
   const localStorageData = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -146,8 +147,8 @@ function SideMenu() {
   ];
 
   return (
-    <div className="h-full w-120 mt-5 flex-col justify-between bg-nav hidden lg:flex shadow-md shadow-gray-600 font-login">
-      <div className="mt-4">
+    <div className="h-full w-120 flex-col justify-between bg-nav hidden lg:flex shadow-md shadow-gray-600 font-login">
+      <div className="mt-4 ml-4">
         <nav aria-label="Main Nav" className="flex flex-col space-y-1">
           {menuItems.map((menuItem, index) => (
             <Link

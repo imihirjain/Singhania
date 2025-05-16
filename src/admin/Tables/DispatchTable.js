@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ExportButtons } from "../../components/ExportButton";
 
 function DispatchTable() {
   const [submittedData, setSubmittedData] = useState([]);
@@ -117,6 +118,27 @@ function DispatchTable() {
   };
 
   const groupedData = groupEntries(handleSearch());
+  const flattenData = (data) => {
+    const flatArray = [];
+
+    data.forEach((item) => {
+      flatArray.push({
+        "Lot Number": item.lotNumber || "N/A",
+        "Party Name": item.party || "N/A",
+        Quality: item.quality || "N/A",
+        Shade: item.shade || "N/A",
+        Process: item.process || "N/A",
+        Status: item.status || "N/A",
+        "Challan Number": item.qualityChallanNumber || "N/A",
+        "Karigar Name": item.karigarName || "N/A",
+        Kg: item.kg || "N/A",
+        Meter: item.meter || "N/A",
+        Roll: item.roll || "N/A",
+      });
+    });
+
+    return flatArray;
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -126,22 +148,30 @@ function DispatchTable() {
             Dispatch Table <br /> Total: {submittedData.length}
           </div>
 
-          <div className="flex items-center bg-backgrnd justify-center mr-6 h-[35px] overflow-hidden rounded-full">
-            <div>
-              <img
-                className="h-[24px] w-[24px] ml-5"
-                src={require("../../assets/searchicon.png")}
-                alt="Inventory Management System"
+          <div className="flex items-center justify-center gap-7">
+            <ExportButtons
+              className="justify-end"
+              tableData={flattenData(handleSearch())}
+              filename="Dispatch Table"
+              orientation="landscape"
+            />
+            <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
+              <div>
+                <img
+                  className="h-[24px] w-[24px] ml-5"
+                  src={require("../../assets/searchicon.png")}
+                  alt="Inventory Management System"
+                />
+              </div>
+              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
-            <div className="h-[25px] ml-6 border-total border-[1px]"></div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
-            />
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ExportButtons } from "../components/ExportButton";
 
 function GreyStockOutTable() {
   const [submittedData, setSubmittedData] = useState([]);
@@ -66,6 +67,25 @@ function GreyStockOutTable() {
 
   const filteredData = groupByAttributes(handleSearch());
 
+  
+  const flattenData = () => {
+    return filteredData.flatMap((lot) =>
+      lot.entries.map((entry) => ({
+        date: formatDateTime(lot.createdAt),
+        lotNumber: lot.lotNumber,
+        partyName: lot.partyName,
+        quality: lot.quality,
+        shade: lot.shade,
+        processType: lot.processType,
+        status: lot.status,
+        challanNumber: entry.challanNumber,
+        kg: entry.kg,
+        meter: entry.meter,
+        roll: entry.roll,
+      }))
+    );
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-full mt-6 bg-white border-nav border-2 rounded-lg">
@@ -75,22 +95,29 @@ function GreyStockOutTable() {
             {filteredData.reduce((total, lot) => total + lot.entries.length, 0)}
           </div>
 
-          <div className="flex mt-3 items-center bg-backgrnd justify-center mr-6 h-[35px] overflow-hidden rounded-full">
-            <div>
-              <img
-                className="h-[24px] w-[24px] ml-5"
-                src={require("../assets/stockinSearch.png")}
-                alt="Inventory Management System"
+          <div className="flex items-center justify-center gap-7">
+            <ExportButtons
+              className="justify-end"
+              tableData={flattenData()}
+              filename="Grey Stock Out"
+            />
+            <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
+              <div>
+                <img
+                  className="h-[24px] w-[24px] ml-5"
+                  src={require("../assets/stockinSearch.png")}
+                  alt="Inventory Management System"
+                />
+              </div>
+              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Party Name..."
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
-            <div className="h-[25px] ml-6 border-total border-[1px]"></div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Party Name..."
-              className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
-            />
           </div>
         </div>
 

@@ -22,120 +22,119 @@ const GreyPreviewTable = ({ data, isEditMode, onEdit }) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-8">
-    <div className="lg:overflow-x-auto overflow-x-scroll w-full md:w-[1000px] mt-8">
-      <table className="min-w-full bg-white divide-y divide-login font-header text-[16px] font-medium divide-gray-200 border ">
-        <thead className="bg-header text-header-font font-header">
-          <tr>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Lot Number
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Party Name
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Quality
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Shade
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Process
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Challan Number
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              KG
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Meter
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Roll
-            </th>
-            <th className="px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Date Time
-            </th>
-            {isEditMode && (
-              <th className="px-2 md:px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
-                Edit
+    <div>
+      <div className="overflow-x-auto mt-4 w-full">
+        <table className="border min-w-full divide-y mt-2 divide-gray-200 overflow-hidden">
+          <thead className="bg-header text-header-font font-header">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Lot Number
               </th>
-            )}
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-login font-header text-[14px] font-medium divide-gray-200">
-          {Object.keys(groupedData).map((key) =>
-            groupedData[key].map((entry, index) => (
-              <tr key={`${key}-${index}`}>
-                {index === 0 && (
-                  <>
-                    <td
-                      rowSpan={groupedData[key].length}
-                      className="px-2 md:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
-                    >
-                      {entry.lotNumber}
-                    </td>
-                    <td
-                      rowSpan={groupedData[key].length}
-                      className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                    >
-                      {entry.partyName}
-                    </td>
-                    <td
-                      rowSpan={groupedData[key].length}
-                      className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                    >
-                      {entry.quality}
-                    </td>
-                    <td
-                      rowSpan={groupedData[key].length}
-                      className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                    >
-                      {entry.shade}
-                    </td>
-                    <td
-                      rowSpan={groupedData[key].length}
-                      className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                    >
-                      {entry.processType}
-                    </td>
-                  </>
-                )}
-                <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.challanNumber}
-                </td>
-                <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.kg}
-                </td>
-                <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.meter}
-                </td>
-                <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.roll}
-                </td>
-                <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatDateTime(entry.dateTime)}
-                </td>
-                {isEditMode && (
-                  <td className="px-2 md:px-6 py-4 whitespace-nowrap">
-                    <button
-                      type="button"
-                      onClick={() => onEdit(entry)}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      ✏️
-                    </button>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Party Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Quality
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Shade
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Process
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Challan Number
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                KG
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Meter
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Roll
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                Date Time
+              </th>
+              {isEditMode && (
+                <th className="px-2 md:px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
+                  Edit
+                </th>
+              )}
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-login font-header text-[14px] font-medium divide-gray-200">
+            {Object.keys(groupedData).map((key) =>
+              groupedData[key].map((entry, index) => (
+                <tr key={`${key}-${index}`}>
+                  {index === 0 && (
+                    <>
+                      <td
+                        rowSpan={groupedData[key].length}
+                        className="px-2 md:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        {entry.lotNumber}
+                      </td>
+                      <td
+                        rowSpan={groupedData[key].length}
+                        className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        {entry.partyName}
+                      </td>
+                      <td
+                        rowSpan={groupedData[key].length}
+                        className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        {entry.quality}
+                      </td>
+                      <td
+                        rowSpan={groupedData[key].length}
+                        className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        {entry.shade}
+                      </td>
+                      <td
+                        rowSpan={groupedData[key].length}
+                        className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        {entry.processType}
+                      </td>
+                    </>
+                  )}
+                  <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.challanNumber}
                   </td>
-                )}
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+                  <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.kg}
+                  </td>
+                  <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.meter}
+                  </td>
+                  <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.roll}
+                  </td>
+                  <td className="px-2 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {formatDateTime(entry.dateTime)}
+                  </td>
+                  {isEditMode && (
+                    <td className="px-2 md:px-6 py-4 whitespace-nowrap">
+                      <button
+                        type="button"
+                        onClick={() => onEdit(entry)}
+                        className="text-blue-500 hover:text-blue-700"
+                      >
+                        ✏️
+                      </button>
+                    </td>
+                  )}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  
   );
 };
 

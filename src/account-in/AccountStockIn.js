@@ -158,8 +158,8 @@ const AccountEntries = () => {
   return (
     <>
       <ToastContainer position="top-center" />
-      <div className="flex flex-col items-center mt-8">
-        <div className="border-2 w-full sm:w-[500px] rounded-lg h-[148px] overflow-hidden">
+      <div className="flex flex-col items-center mt-8 ">
+        <div className="border-2 lg:w-120 sm:w-[500px] w-96 rounded-lg h-[148px] overflow-hidden">
           <div className="mt-4 ml-4 font-semibold">Account - Stock IN</div>
           <div className="bg-black w-full h-[1px] mt-4"></div>
           <div className="font-login mt-3 flex lg:flex-row flex-col">
@@ -170,7 +170,7 @@ const AccountEntries = () => {
               Change Account
             </span>
           </div>
-          <div className="bg-darkgray h-4 mt-10"></div>
+          <div className="bg-darkgray h-4 mt-6 lg:mt-10"></div>
         </div>
 
         <Party
@@ -221,7 +221,7 @@ const AccountEntries = () => {
         />
       </div>
 
-      <div className="flex flex-row space-x-[200px] lg:justify-center">
+      <div className="flex flex-row justify-center gap-10">
         <button
           type="button"
           className="inline-flex mt-6 justify-center px-4 py-2 text-sm font-medium text-white bg-darkgray rounded-md hover:bg-white hover:text-darkgray outline"

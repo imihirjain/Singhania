@@ -6,7 +6,7 @@ import SideMenu from "./SideMenu";
 function Layout() {
   return (
     <>
-      <div className="md:h-16">
+      <div className="h-18 lg:h-16">
         <Header />
       </div>
       <div className="flex flex-col lg:flex-row">

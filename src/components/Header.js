@@ -267,17 +267,17 @@ export default function Header() {
         <Disclosure as="nav" className="bg-nav h-24 shadow-gray-600">
           {({ open }) => (
             <>
-              <div className="ml-[10px]">
+              <div className="ml-8">
                 <div className="flex items-center justify-between">
                   <Link to="/dashboard-account">
                     <div className="flex gap-2 relative">
                       <img
-                        className="h-[41px] w-[40px] absolute flex"
+                        className="h-12 w-14 absolute flex"
                         src={require("../assets/Slogo2.png")}
                         alt="Inventory Management System"
                       />
                     </div>
-                    <p className="items-center font-login font-semibold ml-20 mt-4 text-3xl">
+                    <p className="items-center font-login font-semibold ml-20 mt-4 tracking-wider text-2xl">
                       SINGHANIA FINISHERS
                     </p>
                   </Link>
@@ -291,8 +291,8 @@ export default function Header() {
                       </button>
                       <Menu as="div" className="relative ml-3">
                         <div className="flex space-x-4 mt-2">
-                          <img
-                            className="h-[24px] w-[24px]"
+                          {/* <img
+                            className="h-[24px] w-[24px] mt-3"
                             src={require("../assets/searchicon.png")}
                             alt="Inventory Management System"
                           />
@@ -305,7 +305,7 @@ export default function Header() {
                             className="h-[24px] w-[24px]"
                             src={require("../assets/notificationIcon.png")}
                             alt="Inventory Management System"
-                          />
+                          /> */}
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
 
@@ -313,15 +313,15 @@ export default function Header() {
                               <p className="font-semibold font-footer text-[14px]">
                                 {userName}
                               </p>
-                              <p
+                              <button
                                 className="font-medium font-footer text-[12px] text-footer_red"
                                 onClick={handleSignOut}
                               >
                                 Log Out
-                              </p>
+                              </button>
                             </div>
                             <img
-                              className="h-12 w-12 rounded-full ml-5"
+                              className="h-12 w-12 rounded-full ml-5 mr-5"
                               src={
                                 profileImageUrl ||
                                 require("../assets/footer_img.png")
@@ -339,7 +339,7 @@ export default function Header() {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="absolute right-0 z-10 px-4 py-2 mt-2 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
@@ -351,7 +351,7 @@ export default function Header() {
                                     }
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
-                                      "block px-[1px] py-[2px] text-sm text-gray-700"
+                                      "text-sm text-gray-700 hidden"
                                     )}
                                   >
                                     <span>{item.name}</span>
@@ -364,17 +364,17 @@ export default function Header() {
                       </Menu>
                     </div>
                   </div>
-                  <div className="mr-2 flex md:hidden">
+                  <div className="mr-2 mt-8 flex md:hidden">
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-darkgray focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
-                          className="block h-6 w-6"
+                          className="block h-8 w-8 mb-2"
                           aria-hidden="true"
                         />
                       ) : (
                         <Bars3Icon
-                          className="block h-6 w-6"
+                          className="block h-8 w-8 mb-2 "
                           aria-hidden="true"
                         />
                       )}
@@ -383,23 +383,34 @@ export default function Header() {
                 </div>
               </div>
               <Disclosure.Panel className="md:hidden">
-                <div className="relative space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <div className="relative z-10 space-y-1 bg-white mt-2 border-2 border-gray px-2 pb-3 pt-2 sm:px-3">
                   {(navigation[userRole] || []).map((item) => (
-                    <Link to={item.to} key={item.label}>
-                      <Disclosure.Button
-                        key={item.label}
-                        as="a"
-                        className={classNames(
-                          "text-gray-300 hover:bg-gray-700 hover:bg-gray hover:text-white mt-2 w-[300px]",
-                          "block rounded-md px-3 py-2 text-base font-medium"
-                        )}
-                      >
-                        {item.label}
-                      </Disclosure.Button>
-                    </Link>
+                    <>
+                      <Link to={item.to} key={item.label}>
+                        <Disclosure.Button
+                          key={item.label}
+                          as="a"
+                          className={classNames(
+                            "text-gray-300 hover:bg-gray-700 hover:bg-gray hover:text-white mt-2 w-64",
+                            "block rounded-md px-3 py-2 text-base font-medium"
+                          )}
+                        >
+                          {item.label}
+                        </Disclosure.Button>
+                      </Link>
+                    </>
                   ))}
+                  <button
+                    onClick={handleSignOut}
+                    className={classNames(
+                      "text-gray-300 hover:bg-gray hover:text-white",
+                      "rounded-md px-4 py-2 text-base font-medium"
+                    )}
+                  >
+                    Sign Out
+                  </button>
                 </div>
-                <div className="border-t border-gray-700 pt-4 pb-3">
+                {/* <div className="border-t border-gray-700 pt-4 pb-3">
                   <div className="flex items-center px-5">
                     <Link
                       to={"/profile-page"}
@@ -417,10 +428,6 @@ export default function Header() {
                         </div>
                       </div>
                     </Link>
-                    {/* <button
-                      type="button"
-                      className="ml-auto flex-shrink-0 bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    ></button> */}
                   </div>
                   <div className="space-y-1 ml-1">
                     {userNavigation.map((item) => (
@@ -435,7 +442,7 @@ export default function Header() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </Disclosure.Panel>
             </>
           )}

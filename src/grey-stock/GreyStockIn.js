@@ -281,7 +281,7 @@ const LotManagement = () => {
   return (
     <div className="flex flex-col items-center">
       <ToastContainer position="top-center" />
-      <div className="border-2 w-full sm:w-[500px] rounded-lg h-[170px] lg:h-[148px] overflow-hidden">
+      <div className="border-2 w-96 lg:w-[500px] rounded-lg h-40 lg:h-[148px] overflow-hidden">
         <div className="mt-4 ml-4 text-3xl font-semibold">Grey - Stock IN</div>
         <div className="bg-black w-full h-[1px] mt-4"></div>
         <div className="font-login mt-3 flex lg:flex-row flex-col">
@@ -298,7 +298,7 @@ const LotManagement = () => {
         className="flex flex-col sm:w-[500px] w-full items-center"
         onSubmit={handleSubmit}
       >
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
             Lot Number <span className="text-red-600">*</span>
           </label>
@@ -311,7 +311,7 @@ const LotManagement = () => {
           />
         </div>
 
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
             Party Name<span className="text-red-600 ml-1">*</span>
           </label>
@@ -325,7 +325,7 @@ const LotManagement = () => {
           />
         </div>
 
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
             Quality <span className="text-red-600">*</span>
           </label>
@@ -338,7 +338,7 @@ const LotManagement = () => {
             isDisabled={!isEditable}
           />
         </div>
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
             Challan Number <span className="text-red-600">*</span>
           </label>
@@ -376,7 +376,7 @@ const LotManagement = () => {
           isDisabled={!isShadeEditable} // Make shade field non-editable when not in edit mode
         />
 
-        <div className="border-2 w-full sm:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
+        <div className="border-2 w-96 lg:w-[500px] h-full rounded-lg mt-6 shadow-sm shadow-darkgray">
           <label className="block text-lg font-login ml-4 mt-4 text-gray-700">
             Process Type <span className="text-red-600">*</span>
           </label>

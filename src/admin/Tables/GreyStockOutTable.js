@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { ExportButtons } from "../../components/ExportButton";
 
 const processes = [
   { value: "process1", status: "status1" },
@@ -330,6 +331,24 @@ function GreyStockOutTable() {
     setState(values);
   };
 
+  const flattenData = () => {
+    return filteredData.flatMap((lot) =>
+      lot.entries.map((entry) => ({
+        date: formatDateTime(lot.createdAt),
+        lotNumber: lot.lotNumber,
+        partyName: lot.partyName,
+        quality: lot.quality,
+        shade: lot.shade,
+        processType: lot.processType,
+        status: lot.status,
+        challanNumber: entry.challanNumber,
+        kg: entry.kg,
+        meter: entry.meter,
+        roll: entry.roll,
+      }))
+    );
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-full mt-6 bg-white border-nav border-2 rounded-lg">
@@ -342,26 +361,34 @@ function GreyStockOutTable() {
             <br /> Total Roll: {calculateTotalRoll(filteredData)}
           </div>
 
-          <div className="flex mt-3 items-center bg-backgrnd justify-center mr-6 h-[35px] overflow-hidden rounded-full">
-            <div>
-              <img
-                className="h-[24px] w-[24px] ml-5"
-                src={require("../../assets/stockinSearch.png")}
-                alt="Inventory Management System"
+          <div className="flex items-center justify-center gap-7">
+            <ExportButtons
+              className="justify-end "
+              tableData={flattenData()}
+              filename="Grey Stock Out "
+              orientation="landscape"
+            />
+            <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
+              <div>
+                <img
+                  className="h-[24px] w-[24px] ml-5"
+                  src={require("../../assets/stockinSearch.png")}
+                  alt="Inventory Management System"
+                />
+              </div>
+              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Party Name..."
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
-            <div className="h-[25px] ml-6 border-total border-[1px]"></div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Party Name..."
-              className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
-            />
           </div>
         </div>
 
-        <div className="flex justify-between items-center p-4">
+        <div className="grid grid-cols-2 lg:flex justify-between items-center p-4">
           <div>
             <label htmlFor="partyNameFilter" className="mr-2">
               Party Name:
@@ -482,7 +509,7 @@ function GreyStockOutTable() {
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y mt-6 divide-gray-200 border overflow">
-              <thead className="bg-header text-header-font font-header">
+              <thead className="bg-header text-header-font font-header ">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-[14px] uppercase">
                     Date & Time
@@ -609,7 +636,7 @@ function GreyStockOutTable() {
                             Delete
                           </button>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 z-10 py-4 whitespace-nowrap">
                           <Select
                             options={colors}
                             value={colors.find(

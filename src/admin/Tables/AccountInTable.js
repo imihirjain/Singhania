@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ExportButtons } from "../../components/ExportButton";
 
 const EntryTable = () => {
   const [entries, setEntries] = useState([]);
@@ -102,6 +103,19 @@ const EntryTable = () => {
     setSelectedEntry({ ...selectedEntry, [name]: value });
   };
 
+  const flattenData = () => {
+    return filteredEntries.flatMap((entry) =>
+      entry.qualities.map((quality) => ({
+        "Party Name": entry.partyName,
+        "Challan No.": entry.challanNumber,
+        Quality: quality.quality,
+        KG: quality.kg,
+        Meter: quality.meter,
+        Rolls: quality.roll,
+      }))
+    );
+  };
+
   return (
     <>
       <div className="w-full mt-6 bg-white border-nav border-2 rounded-lg">
@@ -110,22 +124,29 @@ const EntryTable = () => {
             Accounts Stock IN Table <br /> Total: {filteredEntries.length}
           </div>
 
-          <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
-            <div>
-              <img
-                className="h-[24px] w-[24px] ml-5"
-                src={require("../../assets/searchicon.png")}
-                alt="Inventory Management System"
+          <div className="flex items-center justify-center gap-7">
+            <ExportButtons
+              className="justify-end "
+              tableData={flattenData()}
+              filename="Account Stock In"
+            />
+            <div className="flex items-center bg-backgrnd mt-3 justify-center mr-6 h-[35px] overflow-hidden rounded-full">
+              <div>
+                <img
+                  className="h-[24px] w-[24px] ml-5"
+                  src={require("../../assets/searchicon.png")}
+                  alt="Inventory Management System"
+                />
+              </div>
+              <div className="h-[25px] ml-6 border-total border-[1px]"></div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Party Name or Challan No..."
+                className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
               />
             </div>
-            <div className="h-[25px] ml-6 border-total border-[1px]"></div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Party Name or Challan No..."
-              className="mb-4 mt-3 w-[250px] bg-backgrnd placeholder:text-center border border-none placeholder:font-login placeholder:text-[14px] placeholder:bg-backgrnd placeholder:text-total font-medium"
-            />
           </div>
         </div>
         <div className="overflow-x-auto">
