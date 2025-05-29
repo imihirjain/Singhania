@@ -272,13 +272,13 @@ export default function Header() {
                   <Link to="/dashboard-account">
                     <div className="flex gap-2 relative">
                       <img
-                        className="h-12 w-14 absolute flex"
-                        src={require("../assets/Slogo2.png")}
+                        className="h-14 w-14 absolute flex"
+                        src={require("../assets/logo.png")}
                         alt="Inventory Management System"
                       />
                     </div>
-                    <p className="items-center font-login font-semibold ml-20 mt-4 tracking-wider text-2xl">
-                      SINGHANIA FINISHERS
+                    <p className="items-center text-gray font-header font-semibold ml-14 mt-4 tracking-wider text-2xl">
+                      SMART STOCK
                     </p>
                   </Link>
                   <div className="hidden md:block">

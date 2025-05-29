@@ -103,8 +103,11 @@ function Login() {
     <>
       <ToastContainer position="top-center" />
       <div className="grid grid-cols-1 sm:grid-cols-2 h-screen items-center place-items-center">
-        <div className="flex justify-center">
-          <img src={require("../assets/Logo1.png")} alt="Logo" />
+        <div className="flex flex-col justify-center w-96">
+          <img src={require("../assets/logo.png")} alt="Logo" />
+          <h1 className="text-center text-5xl text-gray font-semibold font-header uppercase ">
+            Smart <span className="text-header-font ">Stock </span>
+          </h1>
         </div>
         <div className="w-full max-w-md space-y-8 p-10 rounded-lg">
           <div>
